@@ -1,0 +1,5 @@
+Arrancar Express JS:
+
+
+npm init -y
+npm install express --save (no puede tener un nombre parecido la carpeta)
