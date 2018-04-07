@@ -1,4 +1,5 @@
 var express = require("express")
+var fs = require("fs")
 var app = express ()
 app.set('views','./views');
 app.set('view engine', 'ejs');
@@ -7,20 +8,34 @@ let nombre= "prisca"
 let apellido = "diaz"
 let paises = [ "Argentina", "Alemania", "Brasil", "Peru", "Uruguay", "Chile"]
 
-app.get('/', function (req, res, next) {
-      //res.send('Hello World!')   
+let lt = [];
+fs.readFile('productos.json', 'utf8', function (err, data) {
+    if (err) throw err;
+    
+    let lista = JSON.parse(data)
+    
 
-      res.render('myview', {nombre, apellido, paises })  
+    lista.productos.forEach( p => {
+       lt.push(p.nombre)       
+       return lt;
+      
+    }) ; console.log(lt)
+    
+
+    app.get('/', function (req, res, next) {
+        res.render('myview', {nombre, apellido, lt})  
+    
+    });
+    
+    app.listen(3000, function () {  
+      console.log('Server running at 3000'
+    )})
+
+}) 
 
 
-});
 
 
-
-
-app.listen(3000, function () {  
-    console.log('Server running at 3000'
-)})
 
 
 
