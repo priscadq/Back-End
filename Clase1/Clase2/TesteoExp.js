@@ -6,32 +6,26 @@ app.set('view engine', 'ejs');
 
 let nombre= "prisca"
 let apellido = "diaz"
-let paises = [ "Argentina", "Alemania", "Brasil", "Peru", "Uruguay", "Chile"]
+let lt = [ "Argentina", "Alemania", "Brasil", "Peru", "Uruguay", "Chile"]
 
+/*
 let lt = [];
 fs.readFile('productos.json', 'utf8', function (err, data) {
-    if (err) throw err;
-    
+    if (err) throw err;    
     let lista = JSON.parse(data)
-    
-
     lista.productos.forEach( p => {
        lt.push(p.nombre)       
-       return lt;
-      
-    }) ; console.log(lt)
-    
+       return lt;      
+    }) ;
 
-    app.get('/', function (req, res, next) {
-        res.render('myview', {nombre, apellido, lt})  
-    
-    });
-    
-    app.listen(3000, function () {  
-      console.log('Server running at 3000'
-    )})
+}) */
+app.get('/', function (req, res, next) {
+    res.render('myview', {nombre, apellido, lt})  
+});
+app.listen(3000, function () {  
+  console.log('Server running at 3000'
+)})
 
-}) 
 
 
 
