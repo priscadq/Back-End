@@ -1,0 +1,16 @@
+{
+  "name": "Clase2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "ejercicio2.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.5.9",
+    "express": "^4.16.3"
+  }
+}

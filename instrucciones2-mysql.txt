@@ -1,0 +1,112 @@
+MySQL
+
+-----
+1_ Se descargan la carpeta zip, desde la pagina https://dev.mysql.com/downloads/mysql/ (descargar el zip para nuestro sistema operativo)
+
+
+2_ Extraer el zip en la carpeta C
+
+
+3_ Generar una carpeta data dentro de la carpeta descomprimida y un archivo de configuración my.ini
+
+
+4_ (Pedir el archivo my.ini)
+
+
+5_ Abrimos el cmd o consola del SO, y vamos hasta la carpeta mysql/bin
+
+6_ Ejecutamos lo siguiente en la carpeta mysql/bin: mysqld --initialize-insecure (eso va a crear contenido dentro de la carpeta data y un usuario root)
+
+
+7_ Iniciamos nuestro servidor mysql: mysqld
+
+
+8_ Se comprueba si está instalado con el siguiente comando en la consola y la carpeta bin: mysql (nuestro usuario es root sin contraseña)
+
+
+9_ Para poder gestionar la base de datos, y ver los datos, podemos usar un cliente de base de datos (ejemplo https://www.heidisql.com/download.php, version portable)
+
+10_ Abrimos consola de MySQL y chequeamos datos de conexión: \s en mysql/bin
+
+11_ Abrimos HeidiSQL y creamos la base de datos libreria
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
+
+
+
+
+
+
+Sequelize
+
+---------_ Instalamos el generador de express: npm install -g express-generator
+
+_ creamos un proyecto con la estructura de express: express -f
+
+_ Instalamos dependecias: npm install
+
+_ Iniciamos nuestro servidor de base de datos: mysqld
+
+_ Instalamos cli de sequelize: npm install --save sequelize sequelize-cli
+
+_ Lo ultimo, nos va a generar lo siguiente en el package.json:
+
+   "sequelize": "^3.24.7",
+
+   "sequelize-cli": "^2.4.0"
+
+_ Inicializamos los componentes de sequelize: node_modules/.bin/sequelize init, lo cual nos va a generar 4 carpetas:
+
+   _ config
+
+   _ migrations
+
+   _ models
+
+   _ seeders
+
+_ Configuramos el archivo config/config.json para que apunte a nustra base de datos libreria
+
+_ Vamos a crear el modelo para los clientes: node_modules/.bin/sequelize model:create --name Cliente --attributes nombre:string,apellido:string,email:string, lo cual nos va a generar:
+
+   _ models/cliente.js
+
+   _ migrations/<timestamp>-create-cliente.js_ Ahora vamos a crear el modelo direccion, el cual esta asociado al cliente: node_modules/.bin/sequelize model:create --name Direccion --attributes calle:string, numero:string, ciudad:string, pais:string
+
+_ Luego, en associate de direccion.js, agregamos lo siguiente:  Direccion.belongsTo(models.Cliente) y en associate de cliente.js, agregamos lo siguiente: Cliente.hasOne(models.Direccion, {as: 'Direccion'});
+
+_ En bin/wwww, agregamos lo siguiente: var models = require('../models'); y agregamos lo siguiente en el mismo archivo:
+
+   models.sequelize.sync().then(function() {
+
+       server.listen(port);
+
+       server.on('error', onError);
+
+       server.on('listening', onListening);
+
+   });_ Instalamos mysql: npm install mysql
+
+_ Ejecutamos el comando de migracion: node_modules/.bin/sequelize db:migrate, el cual nos va a crear nuestras tablas en la base de datos
+
+_ Luego, abrimos el archivo models/index.js, y hacemos la siguiente modificacion: var config    = require(__dirname + '/..\config\config.json')[env]; a var config    = require("../config/config.json")[env];
+
+_ Por ultimo, levantamos nuestro servidor, de la siguiente forma: npm run start
+
+_ Para probar que levanta datos, agregar lo siguiente en el archivo routes/index.js:    var express = require('express');
+
+   var router = express.Router();
+
+   var db = require('../models');
+
+   var Cliente = db.Cliente;    /* GET home page. */
+
+   router.get('/', function(req, res, next) {
+
+   Cliente.findAll().then(function(clientes) {
+
+       console.log(clientes)
+
+   });
+
+   });
