@@ -5,9 +5,12 @@ module.exports = (sequelize, DataTypes) => {
     id_cliente: DataTypes.STRING,
     id_vendedor: DataTypes.STRING,
     fecha_venta: DataTypes.STRING
-  }, {tableName: 'Usuario', timestamps: false});
+  }, {tableName: 'Venta', timestamps: false});
   Venta.associate = function(models) {
     // associations can be defined here
+    Venta.hasMany(models.Detalle_Venta);
+    Venta.belongsTo(models.Usuario);
+    
   };
   return Venta;
 };

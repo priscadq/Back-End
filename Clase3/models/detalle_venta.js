@@ -4,9 +4,12 @@ module.exports = (sequelize, DataTypes) => {
     
     id_venta: DataTypes.STRING,
     id_libro: DataTypes.STRING
-  }, {tableName: 'Usuario', timestamps: false});
+  }, {tableName: 'Detalle_Venta', timestamps: false});
   Detalle_Venta.associate = function(models) {
     // associations can be defined here
+
+    Detalle_Venta.belongsTo(models.Libro);
+    Detalle_Venta.belongsTo(models.Venta);
   };
   return Detalle_Venta;
 };
