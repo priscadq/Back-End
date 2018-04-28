@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {tableName: 'Libro', timestamps: false});
   Libro.associate = function(models) {
     // associations can be defined here
+    Libro.hasMany(models.Detalle_Venta, {as: 'Detalles', foreignKey: 'libroID'});
   };
   return Libro;
 };

@@ -6,16 +6,11 @@ module.exports = (sequelize, DataTypes) => {
     apellido: DataTypes.STRING,
     email: DataTypes.STRING,
     //id_direccion: DataTypes.STRING,
-    es_vendedor: DataTypes.STRING
+    vendedor: DataTypes.STRING
   }, {tableName: 'Usuario', timestamps: false}); //agregado tablename y timestamps
   Usuario.associate = function(models) {
     // associations can be defined here
     Usuario.belongsTo(models.Direccion);
-
-
-
-
-
 
 
     //Cliente.belongsTo(models.Direccion);
