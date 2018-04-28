@@ -51,6 +51,22 @@ router.get('/', function(req, res, next) {
 */
 
 
+/*
+  // Busca todos los libros
+  Libro.findAll().then(function(ls) {
+     ls.forEach(u => { 
+       console.log(u.nombre)
+     });
+  });
+*/
+
+  // Busca las ventas
+  Venta.findAll().then(function(vs) {
+    vs.forEach(u => { 
+      console.log(u)
+    });
+ });
+
   });
 
 /*
