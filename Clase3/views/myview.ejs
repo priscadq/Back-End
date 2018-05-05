@@ -6,17 +6,19 @@
     <title>Document</title>
 </head>
 <body>
+
     <ul>
-        <% variableUsuarios.forEach(u => { 
-            console.log(u.nombre)
+        <% pUsuarios.forEach(u => { 
+            console.log(u)
             %>
-            <li><%= u.nombre %></li>
+            <li><%= u %></li>
             <%  
             });
           %>
-        
-    
-        </ul>
+    </ul>
+
+
+       
 
 </body>
 </html>

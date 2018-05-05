@@ -12,18 +12,36 @@ var Direccion = db.Direccion;
   /* GET home page. */
   router.get('/', function(req, res, next) {
 
+    //esta basofia necesita que este todo anidado, es una caca horrible!
     
       // Busca todos los usuarios, y marca el nombre
       Usuario.findAll().then(function(u) {
-        res.render('myview', {
-          variableUsuarios: u,
-        }) 
-      });
-    
-      
 
-       
-       
+                   
+       u.forEach(p => {
+
+          p.getCompraCliente().then(function (c) {
+            
+            console.log(c)
+
+            res.render('myview', {
+              'pUsuarios': c
+              
+            }) 
+            
+
+    
+          });       
+        });
+      });
+
+
+      /*      
+      Libro.findAll().then(function(l) {
+        res.render('myview', {
+          variableLibros: l,
+        }) 
+      });*/
     /*
       //Busca usuario con where
       Usuario.findAll({ where: { nombre: 'gonzalo' } }).then(function(u) {
