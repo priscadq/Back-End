@@ -10,16 +10,20 @@ var Direccion = db.Direccion;
 
   
   /* GET home page. */
-  //router.get('/', function(req, res, next) {
+  router.get('/', function(req, res, next) {
 
-    /*
+    
       // Busca todos los usuarios, y marca el nombre
-      Usuario.findAll().then(function(usuarios) {
-        usuarios.forEach(u => { 
-          console.log(u.nombre)
-        });
+      Usuario.findAll().then(function(u) {
+        res.render('myview', {
+          variableUsuarios: u,
+        }) 
       });
-    */
+    
+      
+
+       
+       
     /*
       //Busca usuario con where
       Usuario.findAll({ where: { nombre: 'gonzalo' } }).then(function(u) {
@@ -60,7 +64,9 @@ var Direccion = db.Direccion;
         });
     });
     */
-  //});    
+  });    
+
+
 
 
   // Agregamos un nuevo cliente
@@ -116,9 +122,14 @@ var Direccion = db.Direccion;
 
 
 //----------------------------------------------------------------------------------------------------------------------
+/*
+let nombre= "prisca"
+let apellido = "diaz"
+let lt = [ "Argentina", "Alemania", "Brasil", "Peru", "Uruguay", "Chile"]
+
 
     router.get('/', function(req, res, next) {
-     res.render('index', { title: 'Express' });
+     res.render('myview', {nombre, apellido, lt});
     });
-
+*/
 module.exports = router;
