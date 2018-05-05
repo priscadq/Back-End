@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     pais: DataTypes.STRING,
     provincia: DataTypes.STRING,
     ciudad: DataTypes.STRING
-  }, {tableName: 'Direccion', timestamps: false});
+  }, {tableName: 'Direccion', timestamps: false, freezeTableName: true,});
   Direccion.associate = function(models) {
     // associations can be defined here
   };

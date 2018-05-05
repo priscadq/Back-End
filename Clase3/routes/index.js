@@ -8,9 +8,9 @@ var Libro = db.Libro;
 var Direccion = db.Direccion;
 
 
-    
+  
   /* GET home page. */
-  router.get('/', function(req, res, next) {
+  //router.get('/', function(req, res, next) {
 
     /*
       // Busca todos los usuarios, y marca el nombre
@@ -60,7 +60,8 @@ var Direccion = db.Direccion;
         });
     });
     */
-  });    
+  //});    
+
 
   // Agregamos un nuevo cliente
   // INSERT INTO `cliente` (`id`,`nombre`,`apellido`,`email`) VALUES (DEFAULT,UNNOMBRE,UNAPELLIDO,UNEMAIL);

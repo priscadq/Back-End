@@ -2,7 +2,7 @@
 module.exports = (sequelize, DataTypes) => {
   var Detalle_Venta = sequelize.define('Detalle_Venta', {
     
-  }, {tableName: 'Detalle_Venta', timestamps: false});
+  }, {tableName: 'Detalle_Venta', timestamps: false, freezeTableName: true,});
   Detalle_Venta.associate = function(models) {
     // associations can be defined here
 

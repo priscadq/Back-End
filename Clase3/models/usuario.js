@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     //id_direccion: DataTypes.STRING,
     vendedor: DataTypes.STRING
-  }, {tableName: 'Usuario', timestamps: false}); //agregado tablename y timestamps
+  }, {tableName: 'Usuario', timestamps: false, freezeTableName: true,}); //agregado tablename y timestamps
   Usuario.associate = function(models) {
     // associations can be defined here
     Usuario.belongsTo(models.Direccion);
